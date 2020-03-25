@@ -4,4 +4,4 @@ var paises = [
 ];
 var estadosSatelites = [
     "Albania","Alemania Oriental","Bulgaria","Checoslovaquia","Hungria","Polonia","Rumania"
-]
+];
