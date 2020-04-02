@@ -12,23 +12,32 @@ var app = new Vue({
     data: {
         enJuego: false,
         letras: [],
-        seleccion: []
+        pais_alteatorio: "",
+        letraJugada:"",
+        caracter:""
     },
     methods: {
         iniciarJ: function () {
             this.enJuego = true
-            var paises_alteatorio = Math.floor(Math.random() * (paises.length));
-            this.seleccion = paises[paises_alteatorio]
-            for (i = 0; i < this.seleccion.length; i++) {
-                this.letras.push("___");
+            var numero_alteatorio = Math.floor(Math.random() * (paises.length));
+            this.pais_alteatorio = paises[numero_alteatorio]
+            for (i = 0; i < this.pais_alteatorio.length; i++) {
+                 this.letras.push("___");
             }
+    },
+
+        ingresarLetra: function () {
+            this.caracter = this.pais_alteatorio.indexOf(this.letraJugada)
+            if (this.caracter != -1  ) {
+                this.letras[this.caracter] = this.letraJugada
+             
+           }
+            this.letraJugada = "";   
 
 
-
-        }
-
-
-        //Solo me compartio VsCode...
+            
+            
+        }    
 
     }
 
