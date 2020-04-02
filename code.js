@@ -12,33 +12,39 @@ var app = new Vue({
     data: {
         enJuego: false,
         letras: [],
-        pais_alteatorio: "",
-        letraJugada:"",
-        caracter:""
+        pais_alteatorio: [],
+        letraJugada: "",
+        vidas:["❤","❤","❤","❤"]
     },
     methods: {
         iniciarJ: function () {
             this.enJuego = true
             var numero_alteatorio = Math.floor(Math.random() * (paises.length));
             this.pais_alteatorio = paises[numero_alteatorio]
+            console.log(this.pais_alteatorio)
             for (i = 0; i < this.pais_alteatorio.length; i++) {
-                 this.letras.push("___");
+                this.letras.push("___");
             }
-    },
+        },
 
         ingresarLetra: function () {
-            this.caracter = this.pais_alteatorio.indexOf(this.letraJugada)
-            if (this.caracter != -1  ) {
-                this.letras[this.caracter] = this.letraJugada
-             
-           }
-            this.letraJugada = "";   
+            for (let index = 0; index < this.pais_alteatorio.length; index++) {
+                if(this.pais_alteatorio[index] === this.letraJugada){
+                    this.letras[index] = this.letraJugada
 
-
-            
-            
-        }    
+                }
+                else{
+                    this.vidas.pop()
+                }
+            }
+            this.letraJugada = "";
+        },
+        stopJ: function(){
+            this.enJuego = false
+            this.letras=[]
+        }
 
     }
 
 });
+

@@ -9,15 +9,22 @@
 </head>
 
 <body>
-    <div id="app" >
-        <div class="row"></div>
+    <div id="app"  >
+        <div v-if="enJuego" class="row"  >
+        <div class="col">
+            <input type="button" value="Terminar" @click="stopJ">
+        </div>
+    
+        <div class="col"></div>
+        
+        </div>
         <div class="jumbotron" v-if="!enJuego">
             <h1 class="display-4">Bienvenido a SoviatAhorcado</h1>
             <p class="lead">El nuevo juego de ahorcado con los paises de la U.S.S.R! </p>
             <hr class="my-3">
             <input type="button" @click="iniciarJ" value="Empezar" class="btn btn-outline-info btn-lg">
         </div>
-        <div class="add-item-form" v-if="enJuego" >
+        <div  v-if="enJuego" >
             <ol>
                 <li v-for="(l , index) in letras" style="display:inline">
                     {{letras[index] }}
@@ -27,6 +34,7 @@
             <input v-model="letraJugada" type="text" placeholder="Ingresa tu letra" @keyup.enter="ingresarLetra">
             <input type="button" value="Enviar" @click="ingresarLetra" class="btn btn-outline-info" >
         </div>
+
 
 
     </div>
