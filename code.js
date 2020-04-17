@@ -69,6 +69,7 @@ var app = new Vue({
             this.letras = []
             this.pais_alteatorio = []
             this.vidas = ["❤", "❤", "❤", "❤"]
+            
         }
 
     }
