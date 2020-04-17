@@ -2,6 +2,7 @@
 
 <head>
     <link rel="stylesheet" href="visual.css">
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -10,36 +11,47 @@
 
 <body>
     <div id="app"  >
-        <div v-if="enJuego" class="row"  >
-        <div class="col">
-            <input type="button" value="Terminar" @click="stopJ" class="btn btn-outline-warning" >
-        </div>
-    
-        <div class="col">
-            
-            <ul>
-                <li v-for="vida in vidas" style="display:inline" >{{ vida }}</li>
-            </ul>
+        <div v-if="enJuego">
+            <div class="row"  >
+                <div class="col">
+                    <button type="button" @click="stopJ" class="btn btn-outline-warning btn-lg" >Terminar</button>
+                </div>
+                
+                <div class="col">
+                    
+                    <ul>
+                        <li v-for="vida in vidas" style="display:inline;font-size:50" >{{ vida }}</li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="row" id="tablero">
+                <ol>
+                    <li v-for="(l , index) in letras" style="display:inline;font-family:Lobster">
+                        {{letras[index] }}
+                    </li>
+                    
+                </ol>
+            </div>
+            <div  class="row" >
+                <div class="col">
+                    <input id="ingresarLetra" v-model="letraJugada" type="text"  @keyup.enter="ingresarLetra" size="3" >
+                </div>
+                <div class="col">
+                    <button type="button" @click="ingresarLetra" class="btn btn-outline-info btn-lg">Enviar</button>
+                </div>
+            </div>
         </div>
         
-        </div>
         <div class="jumbotron" v-if="!enJuego">
             <h1 class="display-4">Bienvenido a SoviatAhorcado</h1>
             <p class="lead">El nuevo juego de ahorcado con los paises de la U.S.S.R! </p>
             <hr class="my-3">
             <input type="button" @click="iniciarJ" value="Empezar" class="btn btn-outline-info btn-lg">
         </div>
-        <div  v-if="enJuego" >
-            <ol>
-                <li v-for="(l , index) in letras" style="display:inline">
-                    {{letras[index] }}
-                </li>
-        
-            </ol>
-            <input v-model="letraJugada" type="text" placeholder="Ingresa tu letra" @keyup.enter="ingresarLetra">
-            <input type="button" value="Enviar" @click="ingresarLetra" class="btn btn-outline-info" >
-        </div>
+    <div >
 
+    </div>
 
 
     </div>
