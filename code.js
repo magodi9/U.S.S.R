@@ -1,6 +1,10 @@
-var paises = [ "armenia", "moldavia", "estonia", "letonia", "lituania", "georgia", "azerbaiyan", "tayikistan",
-               "kirguistan", "bielorusia", "uzbekistan", "turkmenistan", "ucrania", "kazajistan", "rusia", 
-               "albania","alemania oriental", "bulgaria", "checoslovaquia", "hungria", "polonia", "rumania"
+
+
+
+
+var paises = ["armenia", "moldavia", "estonia", "letonia", "lituania", "georgia", "azerbaiyan", "tayikistan",
+    "kirguistan", "bielorusia", "uzbekistan", "turkmenistan", "ucrania", "kazajistan", "rusia",
+    "albania", "alemania oriental", "bulgaria", "checoslovaquia", "hungria", "polonia", "rumania"
 
 ];
 
@@ -83,5 +87,3 @@ var app = new Vue({
         }
     }
 });
-
-
