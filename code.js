@@ -30,7 +30,6 @@ var app = new Vue({
             this.enJuego = true
             var numero_alteatorio = Math.floor(Math.random() * (paises.length));
             this.pais_alteatorio = paises[numero_alteatorio]
-            console.log(this.pais_alteatorio)
             this.obtenerImfPais()
             
             for (i = 0; i < this.pais_alteatorio.length; i++) {
