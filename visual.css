@@ -4,9 +4,8 @@
     top: 10%;
     min-width: 80%;
 }
-body{
-   /* background-color: #c32938 !important; */
-}
+
+
 #tablero{
     padding: 10%;
     font-size: 100;
@@ -15,4 +14,12 @@ body{
 #ingresarLetra{
     border-radius: 6px;   
     font-size: 29;
+}
+.h{  
+    font-size: 29 !important;     
+}
+.alertL{ 
+color: black;}
+.alB{
+    color: red;
 }

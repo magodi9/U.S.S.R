@@ -9,7 +9,7 @@ var paises = ["armenia", "moldavia", "estonia", "letonia", "lituania", "georgia"
 ];
 
 
-// 
+
 
 
 var app = new Vue({
@@ -23,7 +23,13 @@ var app = new Vue({
         gameOver:false,
         mensaje:"",
         img: "",
-        infoP: ""
+        infoP: "",
+        mute: false,
+        audio: undefined,
+        al:false
+        
+       
+        
     },
     methods: {
         iniciarJ: function () {
@@ -35,6 +41,11 @@ var app = new Vue({
             for (i = 0; i < this.pais_alteatorio.length; i++) {
                 this.letras.push(" _ ");
             }
+            this.audio =  new Audio("./HUSSR.mp3");
+            //this.audio.play();
+            this.al = true
+
+                        
         },
 
         ingresarLetra: function () {
@@ -70,6 +81,7 @@ var app = new Vue({
             this.pais_alteatorio = ""
             this.vidas = ["❤", "❤", "❤", "❤"]
             this.gameOver = false
+            this.himno = false
         },
         obtenerImfPais: function (){        
             fetch("https://es.wikipedia.org/api/rest_v1/page/summary/" + this.pais_alteatorio)
@@ -83,6 +95,16 @@ var app = new Vue({
             .catch(error => {
                 console.log(error);
             });
-        }
-    }
+        },
+        muted: function(){
+            this.mute = !this.mute;
+            if(this.audio.paused){
+                this.audio.play();
+            }else{
+                this.audio.pause();
+            }
+
+        },
+      
+  } 
 });

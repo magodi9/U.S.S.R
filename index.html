@@ -1,6 +1,5 @@
-<html>
-
 <head>
+    <script src="https://kit.fontawesome.com/10f9406548.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="visual.css">
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -10,40 +9,53 @@
 </head>
 
 <body>
-    <div id="app"  >
+    <div id="app">
         <div v-if="enJuego && !gameOver">
-            <div class="row"  >
-                <div class="col">
-                    <button type="button" @click="stopJ" class="btn btn-outline-warning btn-lg" >Terminar</button>
+            <div class="row">
+                <div class="col col-lg-2">
+                    <button type="button" @click="stopJ" class="btn btn-outline-warning btn-lg">Terminar</button>
                 </div>
-                
-                <div class="col">
-                    
+                <div class="col col-md-auto ">
+
+
                     <ul>
-                        <li v-for="vida in vidas" style="display:inline;font-size:50" >{{ vida }}</li>
+                        <li v-for="vida in vidas" style="display:inline;font-size:50">{{ vida }}</li>
                     </ul>
                 </div>
-                
+
+                <div class="col col-md-auto">
+                    <div>
+                        <i v-if=!mute class="fas fa-volume-mute h" @click="muted"></i>
+                        <i v-if="mute" class="fas fa-volume-up  h" @click="muted"></i>
+                    </div>
+                </div>
+                <div class="col  ">
+                    <b-alert show> 
+                        <strong class="alertL">Escucha el himno de la U.S.S.R <br> Cuidado! Baja el volumen</strong> 
+                    </b-alert>
+
+                </div>
             </div>
             <div class="row" id="tablero">
                 <ol>
                     <li v-for="(l , index) in letras" style="display:inline;font-family:Lobster">
                         {{ letras[index] }}
                     </li>
-                    
                 </ol>
             </div>
-            <div  class="row" >
+            <div class="row">
                 <div class="col">`
-                    <input id="ingresarLetra" v-model="letraJugada" type="text"  @keyup.enter="ingresarLetra" size="3" autocomplete="off" >
+                    <input id="ingresarLetra" v-model="letraJugada" type="text" @keyup.enter="ingresarLetra" size="3"
+                        autocomplete="off">
                 </div>
                 <div class="col">
                     <button type="button" @click="ingresarLetra" class="btn btn-outline-info btn-lg">Enviar</button>
                 </div>
             </div>
+
         </div>
-        
-        <div class="jumbotron" v-if="!enJuego && !gameOver">
+
+        <div class="jumbotron" bg-variant="info" v-if="!enJuego && !gameOver">
             <h1 class="display-4">Bienvenido a SoviatAhorcado</h1>
             <p class="lead">El nuevo juego de ahorcado con los paises de la U.S.S.R! </p>
             <hr class="my-3">
@@ -52,19 +64,25 @@
         <div class="card" style="width: 50%;" v-if="gameOver">
             <img v-bind:src="img" class="card-img-top" alt="">
             <div class="card-body">
-              <h2 class="card-title">{{ mensaje }}</h2>
-              <h3 class="card-subtitle mb-2 text-muted" v-if="vidas.length > 0">Con {{ vidas.length }} ❤ restantes</h3>
-              <p class="card-text">{{ infoP }}</p>
-              <button @click="stopJ" class="btn btn-outline-success btn-lg">Listo</button>
+                <h2 class="card-title">{{ mensaje }}</h2>
+                <h3 class="card-subtitle mb-2 text-muted" v-if="vidas.length > 0">Con {{ vidas.length }} ❤
+                    restantes
+                </h3>
+                <p class="card-text">{{ infoP }}</p>
+                <button @click="stopJ" class="btn btn-outline-success btn-lg">Listo</button>
+
             </div>
-          </div>
+        </div>
 
 
+
+
+
+
+
+
+        <!-- AQUI ESTA EL PROBLEMA MIJA, ESTE DIV TIENE CONDITIONAL RENDERING, EL NAVEGADOR LO VA ARENDERIZAR BASADO EN V-IF, ENCERRASTE TOOODAA LA APP EN ESE V-IF -->
     </div>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./code.js"></script>
